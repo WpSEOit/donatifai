@@ -1,0 +1,269 @@
+{
+    "version": "1.1",
+    "language": "it",
+    "description": "Catalogo intenti Donatif ottimizzato per GPT DonatifAssistantAI - versione revisionata con segnali migliorati, label uniformi e metadati GPT.",
+    "intents": [
+        {
+            "id": "disponibilita_tempi",
+            "label": "disponibilità e tempi",
+            "signals": {
+                "keywords": [
+                    "disponibil",
+                    "tempi",
+                    "stock",
+                    "arrivo",
+                    "in pronta consegna"
+                ],
+                "patterns": [
+                    "\\bdisponibil\\b",
+                    "\\btempi\\b",
+                    "\\barriv(a|ano)\\b",
+                    "\\bpronta consegna\\b"
+                ]
+            },
+            "examples": [
+                "Avete disponibili i manubri regolabili 25-50mm?",
+                "Quando arrivano i bumper da 10kg?",
+                "È disponibile la panca inclinabile?"
+            ],
+            "response_pattern_hint": "usa tono pratico e CTA morbida",
+            "requires_escalation_check": false,
+            "count": 264
+        },
+        {
+            "id": "preventivo_singolo",
+            "label": "preventivo singolo prodotto",
+            "signals": {
+                "keywords": [
+                    "preventivo",
+                    "offerta",
+                    "prezzo",
+                    "costo",
+                    "tariffa"
+                ],
+                "patterns": [
+                    "\\bpreventiv\\b",
+                    "\\bofferta\\b",
+                    "\\bprezzo\\b",
+                    "\\bcosta\\b"
+                ]
+            },
+            "examples": [
+                "Mi fate un preventivo per una panca piana?",
+                "Quanto costa il bilanciere 20kg?"
+            ],
+            "response_pattern_hint": "fornisci prezzo e CTA per conferma o ordine",
+            "requires_escalation_check": false,
+            "count": 559
+        },
+        {
+            "id": "preventivo_multiprodotto",
+            "label": "preventivo multiprodotto",
+            "signals": {
+                "keywords": [
+                    "preventivo",
+                    "lotto",
+                    "multiplo",
+                    "più prodotti",
+                    "sconto"
+                ],
+                "patterns": [
+                    "\\bpreventivo\\b",
+                    "\\blotto\\b",
+                    "\\bmultiprodotto\\b",
+                    "\\bsconto\\b"
+                ]
+            },
+            "examples": [
+                "Posso avere un preventivo per rack + bilanciere + bumper?",
+                "Potete farmi un prezzo per più prodotti insieme?"
+            ],
+            "response_pattern_hint": "riassumi i prodotti e offri preventivo PDF o passaggio al commerciale",
+            "requires_escalation_check": true,
+            "count": 240
+        },
+        {
+            "id": "spedizione_logistica",
+            "label": "spedizione e logistica",
+            "signals": {
+                "keywords": [
+                    "spedizione",
+                    "consegna",
+                    "corriere",
+                    "tempi di consegna",
+                    "ritiro"
+                ],
+                "patterns": [
+                    "\\bspediz\\b",
+                    "\\bconsegn\\b",
+                    "\\bcorriere\\b",
+                    "\\britiro\\b"
+                ]
+            },
+            "examples": [
+                "Quanto costa la spedizione per Milano?",
+                "Chi consegna il pacco?",
+                "Posso ritirare in sede?"
+            ],
+            "response_pattern_hint": "indica tempi medi e costi, CTA per tracking o ritiro",
+            "requires_escalation_check": false,
+            "count": 709
+        },
+        {
+            "id": "ordini_pagamenti_info",
+            "label": "ordini e pagamenti",
+            "signals": {
+                "keywords": [
+                    "ordine",
+                    "pagamento",
+                    "fattura",
+                    "link",
+                    "checkout"
+                ],
+                "patterns": [
+                    "\\bordine\\b",
+                    "\\bpaga\\b",
+                    "\\bfattura\\b",
+                    "\\blink\\b"
+                ]
+            },
+            "examples": [
+                "Come posso ordinare?",
+                "Accettate PayPal o bonifico?",
+                "Mi serve la fattura per l'ordine."
+            ],
+            "response_pattern_hint": "descrivi opzioni di ordine e pagamento, CTA per link diretto",
+            "requires_escalation_check": false,
+            "count": 714
+        },
+        {
+            "id": "resi_garanzia",
+            "label": "resi e garanzia",
+            "signals": {
+                "keywords": [
+                    "reso",
+                    "cambio",
+                    "garanzia",
+                    "difettoso",
+                    "rimbors"
+                ],
+                "patterns": [
+                    "\\bres(o|i)\\b",
+                    "\\bgaranzi\\b",
+                    "\\bcambi\\b",
+                    "\\bdifett\\b"
+                ]
+            },
+            "examples": [
+                "Posso restituire la panca che non va bene?",
+                "Il prodotto è difettoso, cosa devo fare?"
+            ],
+            "response_pattern_hint": "spiega politica resi o garanzia, CTA per modulo RMA o link procedura",
+            "requires_escalation_check": true,
+            "count": 220
+        },
+        {
+            "id": "info_tecniche",
+            "label": "informazioni tecniche",
+            "signals": {
+                "keywords": [
+                    "tecnico",
+                    "peso",
+                    "dimensioni",
+                    "materiale",
+                    "specifiche"
+                ],
+                "patterns": [
+                    "\\bpeso\\b",
+                    "\\bdimension\\b",
+                    "\\bmaterial\\b",
+                    "\\bspecific\\b"
+                ]
+            },
+            "examples": [
+                "Quanto pesa la barra olimpica?",
+                "Che materiale è la panca inclinabile?"
+            ],
+            "response_pattern_hint": "fornisci dati tecnici chiari, CTA per scheda prodotto",
+            "requires_escalation_check": false,
+            "count": 174
+        },
+        {
+            "id": "montaggio_installazione",
+            "label": "montaggio e installazione",
+            "signals": {
+                "keywords": [
+                    "montaggio",
+                    "installazione",
+                    "assemblare",
+                    "istruzioni"
+                ],
+                "patterns": [
+                    "\\bmontagg\\b",
+                    "\\binstall\\b",
+                    "\\bassembl\\b",
+                    "\\bistruzion\\b"
+                ]
+            },
+            "examples": [
+                "Come si monta il rack?",
+                "Avete un video per l’installazione della panca?"
+            ],
+            "response_pattern_hint": "offri istruzioni semplici o link a video tutorial",
+            "requires_escalation_check": false,
+            "count": 240
+        },
+        {
+            "id": "post_vendita_ricambi",
+            "label": "post vendita e ricambi",
+            "signals": {
+                "keywords": [
+                    "ricambio",
+                    "post-vendita",
+                    "riparazione",
+                    "assistenza",
+                    "sostituzione"
+                ],
+                "patterns": [
+                    "\\bricambi\\b",
+                    "\\briparaz\\b",
+                    "\\bassistenza\\b",
+                    "\\bsostituzion\\b"
+                ]
+            },
+            "examples": [
+                "Ho rotto una maniglia, posso sostituirla?",
+                "Serve assistenza per un prodotto arrivato danneggiato."
+            ],
+            "response_pattern_hint": "identifica il prodotto e inoltra al post-vendita se necessario",
+            "requires_escalation_check": true,
+            "count": 313
+        },
+        {
+            "id": "progetti_chiavi_in_mano",
+            "label": "progetti chiavi in mano",
+            "signals": {
+                "keywords": [
+                    "progetto",
+                    "palestra",
+                    "fornitura",
+                    "b2b",
+                    "corporate"
+                ],
+                "patterns": [
+                    "\\bprogett\\b",
+                    "\\bb2b\\b",
+                    "\\bfornit\\b",
+                    "\\bcorporate\\b"
+                ]
+            },
+            "examples": [
+                "Realizzate palestre complete per aziende?",
+                "Offrite consulenze per allestire spazi fitness?"
+            ],
+            "response_pattern_hint": "qualifica il cliente e proponi passaggio a B2B manager",
+            "requires_escalation_check": true,
+            "count": 240
+        }
+    ]
+}

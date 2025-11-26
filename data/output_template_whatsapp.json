@@ -1,0 +1,34 @@
+{
+  "template": {
+    "analisi": "[Breve sintesi oggettiva della richiesta cliente, basata solo sul testo fornito. Nessuna riformulazione, nessuna deduzione extra. Esempio: 'richiesta disponibilità bilanciere 20kg']",
+
+    "azioni": [
+      "[Descrizione operativa delle azioni da compiere per rispondere correttamente. Devono includere: verifiche necessarie, eventuali escalation o raccolta info mancanti. Esempi: 'Verificare stock magazzino', 'Richiedere conferma modello esatto']",
+      "[Se richiesto, includere placeholder obbligatori per cause esterne non deducibili: '[inserire causa ritardo verificata manualmente]']"
+    ],
+
+    "risposta": "[Testo completo e pronto per essere incollato in WhatsApp. Deve rispettare: nessun markdown, tono cordiale e tecnico-pratico, linguaggio adattivo (formale o informale), frasi brevi. Nessun inizio con 'Sì', 'Perfetto' se non c’è domanda diretta. Nessuna CTA se non prevista dall’intent o dal contesto. Le parole da enfatizzare usano gli *asterischi* come su WhatsApp. Esempio: 'Ciao! Il bilanciere da 20kg è *disponibile*. Vuoi che ti mando il link per l’ordine?']",
+
+    "traduzione": "[Solo se la lingua del cliente NON è italiano. Campo aggiuntivo con la traduzione completa della risposta in italiano, per uso operatore. Deve replicare la risposta esattamente, senza adattamenti. Esempio: 'Ciao! Il bilanciere da 20kg è disponibile. Vuoi che ti mando il link per l’ordine?']",
+
+    "trm_meta": {
+      "iterazione": 3,
+      "confidence": 0.91,
+      "confidence_label": "Alta",
+      "verifica_trm": "ok"
+    }
+  },
+
+  "note": {
+    "regole_obbligatorie": [
+      "Il formato deve essere JSON valido.",
+      "Non includere markdown o emoji.",
+      "Tutti i campi devono essere compilati, tranne 'traduzione' (obbligatorio solo se lingua ≠ italiano).",
+      "L'ordine dei campi deve essere sempre: analisi → azioni → risposta → traduzione → trm_meta.",
+      "Il contenuto di 'risposta' deve essere conforme ai pattern Donatif, mai promozionale, mai inventato.",
+      "Se mancano dati per formulare una risposta completa, usare placeholder nei punti rilevanti (es. '[inserire causa ritardo]')."
+    ],
+    "lingua": "italiano",
+    "uso": "Questo template viene usato per risposte WhatsApp generate da DonatifAssistantAI e incollate tramite estensione Chrome."
+  }
+}

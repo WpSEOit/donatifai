@@ -1,0 +1,63 @@
+{
+  "template": {
+    "analisi": "[Sintesi oggettiva della richiesta del cliente. Nessuna ripetizione del testo originale. Nessuna deduzione non supportata. Se la lingua è straniera, l'analisi rimane in italiano. Esempio: 'richiesta di disponibilità bilanciere 20kg.']",
+
+    "azioni": [
+      "[Verifica operativa o controllo reale. Es: 'Verificare disponibilità a magazzino.']",
+      "[Eventuale escalation interna. Es: 'Inoltrare a account B2B.']",
+      "[Richiesta dati mancanti se necessari. Es: 'Richiedere CAP per calcolo spedizione.']",
+      "[Placeholder obbligatorio se una causa non è conoscibile: 'inserire causa ritardo verificata manualmente']"
+    ],
+
+    "email_inbound": {
+      "oggetto": "[Oggetto coerente con la richiesta ricevuta. Es: 'Informazioni su disponibilità prodotto']",
+      "corpo": [
+        "Gentile [Nome del cliente],",
+        "[Paragrafo 1: risposta diretta, chiara, mai ripetitiva.]",
+        "[Paragrafo 2: info operative o tecniche, nessuna CTA non richiesta.]",
+        "[Paragrafo 3: chiusura sobria e formale.]",
+        "Resto a disposizione per qualsiasi ulteriore necessità.",
+        "Cordiali saluti,",
+        "Donatif"
+      ]
+    },
+
+    "email_outbound": {
+      "oggetto": "[Oggetto chiaro e formale. Es: 'Proposta di fornitura personalizzata']",
+      "corpo": [
+        "Gentile [Nome del destinatario],",
+        "[Paragrafo 1: motivo del contatto da parte di Donatif.]",
+        "[Paragrafo 2: contenuti tecnici o di progetto, mai promozionali.]",
+        "[Paragrafo 3: chiusura orientata alla collaborazione.]",
+        "Resto a disposizione per qualsiasi informazione.",
+        "Cordiali saluti,",
+        "Donatif"
+      ]
+    },
+
+    "traduzione": "[Solo se la lingua del cliente non è italiano. Campo contenente la traduzione completa dell'email generata sopra, per supporto all’operatore. Deve replicare esattamente la risposta.]",
+
+    "trm_meta": {
+      "iterazione": 3,
+      "confidence": 0.94,
+      "confidence_label": "Alta",
+      "verifica_trm": "ok"
+    }
+  },
+
+  "note": {
+    "regole_obbligatorie": [
+      "Tono formale obbligatorio in tutte le email.",
+      "Uso del Lei in ogni frase, mai usare 'tu'.",
+      "Inizio frase sempre con lettera maiuscola.",
+      "Nessuna CTA non prevista nel pattern dell’intent o nel contesto.",
+      "Nessuna offerta commerciale o marketing.",
+      "Nessuna emoji o tono colloquiale.",
+      "Struttura email obbligatoria come da template.",
+      "Campo 'traduzione' solo se lingua del cliente ≠ italiano.",
+      "Blocchi obbligatori: analisi → azioni → email_inbound / email_outbound → traduzione (se necessaria) → trm_meta."
+    ],
+    "lingua": "italiano",
+    "uso": "Questo template viene utilizzato dal GPT per generare email inbound e outbound coerenti con lo stile Donatif."
+  }
+}
