@@ -88,7 +88,7 @@ FORMATTA l’output esattamente come nel template. Nessun markdown, emoji o deco
             temperature=0.4
         )
         risposta = response.choices[0].message.content.strip()
-        return {"risposta": risposta}
+        return json.loads(risposta)
     except Exception as e:
         logging.error("Errore durante la chiamata OpenAI:")
         logging.error(traceback.format_exc())
