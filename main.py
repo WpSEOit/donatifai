@@ -36,7 +36,7 @@ def load_file(file_path: str):
 # Endpoint API
 @app.post("/process")
 async def process(data: InputData):
-    if data.modalita not in ["whatsapp", "email"]:
+    if data.channel not in ["whatsapp", "email"]:
         return JSONResponse(status_code=400, content={"errore": "modalita deve essere 'whatsapp' o 'email'"})
 
     # Caricamento knowledge base
@@ -54,10 +54,10 @@ Sei DonatifAssistantAI, un assistente interno che genera bozze professionali per
 
 ISTRUZIONI:
 - Analizza la seguente conversazione cliente:
-{data.chat}
+{data.chat_history}
 
 - Contesto fornito dall’operatore (dà priorità assoluta):
-{data.commento_operatore}
+{data.operator_note}
 
 - Applica linee guida operative da handling_guidelines:
 {handling_guidelines}
