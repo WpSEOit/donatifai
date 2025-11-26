@@ -33,7 +33,7 @@ def load_file(file_path: str):
         with open(file_path, "r", encoding="utf-8") as f:
             return f.read()
 
-@app.post("/donatif/processa")
+@app.post("/donatif/process")
 async def processa_richiesta(data: InputData):
     # Validazione modalità
     if data.modalita not in ["whatsapp", "email"]:
@@ -50,33 +50,55 @@ async def processa_richiesta(data: InputData):
     output_template = load_file(f"{DATA_PATH}/{output_template_file}")
 
     # Costruzione prompt
-    prompt = f"""
-Sei DonatifAssistantAI, un assistente interno che genera bozze professionali per operatori Donatif.
+    prompt = f\"\"\"
+Sei DonatifAssistantAI, un assistente interno che genera risposte coerenti, strutturate e professionali per operatori Donatif.
 
 ISTRUZIONI:
-- Analizza la seguente conversazione cliente:
-{data.chat}
+- Analizza la conversazione cliente riportata sotto.
+- Usa come riferimento prioritario il contesto dell’operatore fornito sotto.
+- Applica tutte le regole contenute nei seguenti file:
 
-- Contesto fornito dall’operatore (dà priorità assoluta):
-{data.commento_operatore}
-
-- Applica linee guida operative da handling_guidelines:
-{handling_guidelines}
-
-- Segui i pattern linguistici e struttura da:
-{response_patterns}
-
-- Tono e stile secondo:
-{style_guide}
-
-- Template di output da usare:
-{json.dumps(output_template)}
-
-- Catalogo intenti:
+Catalogo Intent:
 {json.dumps(intent_catalog)}
 
-FORMATTA l’output esattamente come nel template. Nessun markdown, emoji o decorazione.
-"""
+Linee guida operative:
+{handling_guidelines}
+
+Pattern linguistici e risposte:
+{response_patterns}
+
+Guida di stile:
+{style_guide}
+
+Template di output da rispettare (in formato JSON):
+{json.dumps(output_template)}
+
+📥 Conversazione cliente:
+{data.chat}
+
+📌 Contesto manuale dell’operatore (da seguire alla lettera se presente):
+{data.commento_operatore}
+
+📤 FORMATO OUTPUT:
+Rispondi restituendo solo un oggetto JSON con i seguenti campi:
+
+{{
+  "analisi": "...",
+  "azioni": "...",
+  "risposta": "...",
+  "meta": {{
+    "confidence": "alta/media/bassa",
+    "iteration": numero,
+    "verifica_trm": "ok" oppure "warning"
+  }}
+}}
+
+📛 IMPORTANTE:
+- Nessun markdown o emoji.
+- Nessuna ripetizione del messaggio cliente.
+- Nessuna CTA non prevista o inventata.
+- Segui rigorosamente il tono e il formato del template.
+\"\"\"
 
     # Chiamata OpenAI
     try:
@@ -86,6 +108,6 @@ FORMATTA l’output esattamente come nel template. Nessun markdown, emoji o deco
             temperature=0.4
         )
         risposta = response.choices[0].message.content.strip()
-        return {"risposta": risposta}
+        return JSONResponse(content=json.loads(risposta))
     except Exception as e:
         return JSONResponse(status_code=500, content={"errore": str(e)})
