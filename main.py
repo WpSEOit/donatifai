@@ -37,7 +37,7 @@ def load_file(file_path: str):
 @app.post("/process")
 async def process(data: InputData):
     if data.channel not in ["whatsapp", "email"]:
-        return JSONResponse(status_code=400, content={"errore": "modalita deve essere 'whatsapp' o 'email'"})
+        return JSONResponse(status_code=400, content={"errore": "channel deve essere 'whatsapp' o 'email'"})
 
     # Caricamento knowledge base
     intent_catalog = load_file(f"{DATA_PATH}/intent_catalog.json")
@@ -45,7 +45,7 @@ async def process(data: InputData):
     response_patterns = load_file(f"{DATA_PATH}/response_patterns_.md")
     style_guide = load_file(f"{DATA_PATH}/style_guide_donatif.md")
 
-    template_file = "output_template_whatsapp.json" if data.modalita == "whatsapp" else "output_template_email.json"
+    template_file = "output_template_whatsapp.json" if data.channel == "whatsapp" else "output_template_email.json"
     output_template = load_file(f"{DATA_PATH}/{template_file}")
 
     # Composizione prompt completo
