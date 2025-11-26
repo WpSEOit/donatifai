@@ -20,9 +20,9 @@ MODEL = "gpt-4o"
 
 # Schema input API
 class InputData(BaseModel):
-    chat: str
-    commento_operatore: str = ""
-    modalita: str  # "whatsapp" oppure "email"
+    chat_history: str
+    operator_note: str = ""
+    channel: str  # "whatsapp" oppure "email"
 
 # Utility per caricare file
 def load_file(file_path: str):
