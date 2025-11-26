@@ -5,6 +5,10 @@ import openai
 import os
 import json
 from dotenv import load_dotenv
+import traceback
+import logging
+
+logging.basicConfig(level=logging.INFO)
 
 # Carica variabili ambiente da .env
 load_dotenv()
@@ -86,4 +90,6 @@ FORMATTA l’output esattamente come nel template. Nessun markdown, emoji o deco
         risposta = response.choices[0].message.content.strip()
         return {"risposta": risposta}
     except Exception as e:
+        logging.error("Errore durante la chiamata OpenAI:")
+        logging.error(traceback.format_exc())
         return JSONResponse(status_code=500, content={"errore": str(e)})
