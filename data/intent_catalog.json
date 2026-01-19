@@ -5,6 +5,12 @@
     "intents": [
         {
             "id": "disponibilita_tempi",
+			"email_constraints": {
+				"saluto": "mantieni il saluto dell’utente",
+				"firma": "non aggiungere firme o reparti",
+				"tono": "formale"
+			},
+			"requires_verified_info": true,
             "label": "disponibilità e tempi",
             "signals": {
                 "keywords": [
@@ -32,6 +38,12 @@
         },
         {
             "id": "preventivo_singolo",
+			"email_constraints": {
+				"saluto": "mantieni il saluto dell’utente",
+				"firma": "non aggiungere firme o reparti",
+				"tono": "formale"
+			},
+			"requires_verified_info": true,			
             "label": "preventivo singolo prodotto",
             "signals": {
                 "keywords": [
@@ -59,6 +71,12 @@
         {
             "id": "preventivo_multiprodotto",
             "label": "preventivo multiprodotto",
+			"email_constraints": {
+				"saluto": "mantieni il saluto dell’utente",
+				"firma": "non aggiungere firme o reparti",
+				"tono": "formale"
+			},
+			"requires_verified_info": true,
             "signals": {
                 "keywords": [
                     "preventivo",
@@ -85,6 +103,12 @@
         {
             "id": "spedizione_logistica",
             "label": "spedizione e logistica",
+			"email_constraints": {
+				"saluto": "mantieni il saluto dell’utente",
+				"firma": "non aggiungere firme o reparti",
+				"tono": "formale"
+			},
+			"requires_verified_info": true,
             "signals": {
                 "keywords": [
                     "spedizione",
@@ -112,6 +136,12 @@
         {
             "id": "ordini_pagamenti_info",
             "label": "ordini e pagamenti",
+			"email_constraints": {
+				"saluto": "mantieni il saluto dell’utente",
+				"firma": "non aggiungere firme o reparti",
+				"tono": "formale"
+			},
+			"requires_verified_info": true,
             "signals": {
                 "keywords": [
                     "ordine",
@@ -139,6 +169,12 @@
         {
             "id": "resi_garanzia",
             "label": "resi e garanzia",
+			"email_constraints": {
+				"saluto": "mantieni il saluto dell’utente",
+				"firma": "non aggiungere firme o reparti",
+				"tono": "formale"
+			},
+			"requires_verified_info": true,
             "signals": {
                 "keywords": [
                     "reso",
@@ -165,6 +201,12 @@
         {
             "id": "info_tecniche",
             "label": "informazioni tecniche",
+			"email_constraints": {
+				"saluto": "mantieni il saluto dell’utente",
+				"firma": "non aggiungere firme o reparti",
+				"tono": "formale"
+			},
+			"requires_verified_info": true,
             "signals": {
                 "keywords": [
                     "tecnico",
@@ -191,6 +233,12 @@
         {
             "id": "montaggio_installazione",
             "label": "montaggio e installazione",
+			"email_constraints": {
+				"saluto": "mantieni il saluto dell’utente",
+				"firma": "non aggiungere firme o reparti",
+				"tono": "formale"
+			},
+			"requires_verified_info": true,
             "signals": {
                 "keywords": [
                     "montaggio",
@@ -216,6 +264,12 @@
         {
             "id": "post_vendita_ricambi",
             "label": "post vendita e ricambi",
+			"email_constraints": {
+				"saluto": "mantieni il saluto dell’utente",
+				"firma": "non aggiungere firme o reparti",
+				"tono": "formale"
+			},
+			"requires_verified_info": true,
             "signals": {
                 "keywords": [
                     "ricambio",
@@ -242,6 +296,12 @@
         {
             "id": "progetti_chiavi_in_mano",
             "label": "progetti chiavi in mano",
+			"email_constraints": {
+				"saluto": "mantieni il saluto dell’utente",
+				"firma": "non aggiungere firme o reparti",
+				"tono": "formale"
+			},
+			"requires_verified_info": true,
             "signals": {
                 "keywords": [
                     "progetto",
@@ -264,6 +324,33 @@
             "response_pattern_hint": "qualifica il cliente e proponi passaggio a B2B manager",
             "requires_escalation_check": true,
             "count": 240
-        }
+        },
+		{
+		  "id": "messaggio_neutro",
+		  "label": "messaggio neutro / chiusura",
+		  "signals": {
+			"keywords": [
+			  "rimaniamo a disposizione",
+			  "grazie",
+			  "a presto",
+			  "cordiali saluti",
+			  "la ricontatterò",
+			  "oggi la richiamo"
+			],
+			"patterns": [
+			  "rimaniamo a disposizione",
+			  "la ricontatter",
+			  "oggi la richiam"
+			]
+		  },
+		  "examples": [
+			"Non si preoccupi, rimaniamo a disposizione per qualsiasi esigenza.",
+			"Buongiorno, oggi la richiamo.",
+			"Grazie mille, a presto."
+		  ],
+		  "response_pattern_hint": "non aggiungere informazioni, rispondere in modo minimale o non rispondere",
+		  "requires_escalation_check": false,
+		  "count": 0
+		}
     ]
 }
